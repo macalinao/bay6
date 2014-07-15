@@ -5,7 +5,8 @@
   "main": "index.js",
   "dependencies": {
     "express-restify-mongoose": "~0.6.8",
-    "mongoose": "~3.8.0"
+    "mongoose": "~3.8.0",
+    "xtend": "~3.0.0"
   },
   "devDependencies": {
     "chai": "*",

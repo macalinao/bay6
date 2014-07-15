@@ -1,5 +1,6 @@
 var mongoose = require("mongoose");
 var restify = require("express-restify-mongoose");
+var xtend = require("xtend");
 
 var Model = require("libs/model");
 
@@ -9,6 +10,11 @@ module.exports = function() {
 
 function Bay6() {
   this._models = [];
+
+  this.options = {
+    prefix: "/api",
+    version: ""
+  }
 }
 
 Bay6.prototype.model = function model() {
@@ -25,6 +31,7 @@ Bay6.prototype.modelFromSchema = function modelFromSchema(name, schema, opts) {
 }
 
 Bay6.prototype.modelFromMongoose = function modelFromMongoose(model, opts) {
+  opts = xtend(this.options, opts);
   var mod = new Model(model, opts);
   this._models.push(mod);
 }
