@@ -56,12 +56,15 @@ Bay6.prototype.serveExpress = function serveExpress(app) {
  * Serves this Bay6 instance with the default setup.
  *
  * @param {Number} port - The port of the server
+ * @param {String} publicDir - A static public directory to serve
  */
-Bay6.prototype.serve = function serve(port) {
+Bay6.prototype.serve = function serve(port, publicDir) {
   port = port || 80;
+  hasPublic = hasPublic || false;
   var app = express();
   app.use(bodyParser.json());
   app.use(methodOverride());
+  app.use(express.static(publicDir);
   this.serveExpress(app);
 
   app.listen(port);
