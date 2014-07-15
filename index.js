@@ -2,9 +2,11 @@ var bodyParser = require("body-parser");
 var express = require("express");
 var methodOverride = require("method-override");
 var mongoose = require("mongoose");
+var passport = require("passport");
 var restify = require("express-restify-mongoose");
 var xtend = require("xtend");
 
+var Auth = require("libs/auth");
 var Model = require("libs/model");
 
 module.exports = function() {
@@ -13,6 +15,8 @@ module.exports = function() {
 
 function Bay6() {
   this._models = [];
+
+  this.auth = auth();
 
   this.options = {
     prefix: "/api",
