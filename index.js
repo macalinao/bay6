@@ -1,22 +1,29 @@
-/*! bay6 v0.0.0 - MIT license */
+var mongoose = require("mongoose");
 
-'use strict';
+module.exports = function() {
+  return new Bay6();
+}
 
-/**
- * Module dependencies
- */
+function Bay6() {
+  this._models = [];
+}
 
-/**
- * Module exports
- */
+Bay6.prototype.model = function model() {
+  if (typeof arguments[0] === "string") {
+    return this.modelFromSchema.apply(this, arguments);
+  } else {
+    return this.modelFromMongoose.apply(this, arguments);
+  }
+}
 
-module.exports = bay6;
+Bay6.prototype.modelFromSchema = function modelFromSchema(name, schema, opts) {
+  var model = mongoose.model(name, new mongoose.Schema(schema);
+  return this.modelFromMongoose(model, opts);
+}
 
-/**
- * @param {}
- * @return {}
- * @api public
- */
-
-function bay6() {
+Bay6.prototype.modelFromMongoose = function modelFromMongoose(model, opts) {
+  this._models.push({
+    model: model,
+    opts: opts
+  }); 
 }
