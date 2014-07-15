@@ -1,3 +1,6 @@
+var bodyParser = require("body-parser");
+var express = require("express");
+var methodOverride = require("method-override");
 var mongoose = require("mongoose");
 var restify = require("express-restify-mongoose");
 var xtend = require("xtend");
@@ -47,4 +50,19 @@ Bay6.prototype.serveExpress = function serveExpress(app) {
   this._models.filter(function(model) {
     restify.serve(app, model.model, opts);
   }
+}
+
+/**
+ * Serves this Bay6 instance with the default setup.
+ *
+ * @param {Number} port - The port of the server
+ */
+Bay6.prototype.serve = function serve(port) {
+  port = port || 80;
+  var app = express();
+  app.use(bodyParser.json());
+  app.use(methodOverride());
+  this.serveExpress(app);
+
+  app.listen(port);
 }
