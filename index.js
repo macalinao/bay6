@@ -36,6 +36,13 @@ Bay6.prototype.modelFromMongoose = function modelFromMongoose(model, opts) {
   this._models.push(mod);
 }
 
+/**
+ * Serves this Bay6 instance on an Express server.
+ * Ensure bodyParser.json() is enabled!
+ * 
+ * @param {express} app - The app
+ *
+ */
 Bay6.prototype.serveExpress = function serveExpress(app) {
   this._models.filter(function(model) {
     restify.serve(app, model.model, opts);
