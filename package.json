@@ -1,0 +1,17 @@
+{
+  "name": "bay6",
+  "description": "",
+  "version": "0.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "express-restify-mongoose": "~0.6.8",
+    "mongoose": "~3.8.0"
+  },
+  "devDependencies": {
+    "chai": "*",
+    "mocha": "*"
+  },
+  "scripts": {
+    "test": "mocha --reporter spec"
+  }
+}
