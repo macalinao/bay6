@@ -1,4 +1,5 @@
 var mongoose = require("mongoose");
+var restify = require("express-restify-mongoose");
 
 var Model = require("libs/model");
 
@@ -26,4 +27,10 @@ Bay6.prototype.modelFromSchema = function modelFromSchema(name, schema, opts) {
 Bay6.prototype.modelFromMongoose = function modelFromMongoose(model, opts) {
   var mod = new Model(model, opts);
   this._models.push(mod);
+}
+
+Bay6.prototype.serveExpress = function serveExpress(app) {
+  this._models.filter(function(model) {
+    restify.serve(app, model.model, opts);
+  }
 }
