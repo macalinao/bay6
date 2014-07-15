@@ -1,5 +1,7 @@
 var mongoose = require("mongoose");
 
+var Model = require("libs/model");
+
 module.exports = function() {
   return new Bay6();
 }
@@ -22,8 +24,6 @@ Bay6.prototype.modelFromSchema = function modelFromSchema(name, schema, opts) {
 }
 
 Bay6.prototype.modelFromMongoose = function modelFromMongoose(model, opts) {
-  this._models.push({
-    model: model,
-    opts: opts
-  }); 
+  var mod = new Model(model, opts);
+  this._models.push(mod);
 }
