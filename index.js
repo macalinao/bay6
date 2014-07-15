@@ -64,7 +64,7 @@ Bay6.prototype.serve = function serve(port, publicDir) {
   var app = express();
   app.use(bodyParser.json());
   app.use(methodOverride());
-  app.use(express.static(publicDir);
+  app.use(express.static(publicDir));
   this.serveExpress(app);
 
   app.listen(port);
