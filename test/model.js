@@ -6,6 +6,7 @@ var request = require("supertest");
 
 describe("Model", function() {
   var app;
+  var server;
   var model;
 
   beforeEach(function() {
@@ -21,26 +22,30 @@ describe("Model", function() {
     it("should return a maximum of n documents", function(done) {
       model.limit(5);
 
-      var server = app.serve(9000);
-
-      var Document = app.mongoose.model("Document");
-      async.each([1, 2, 3, 4, 5, 6], function(useless, done2) {
-        var doc = new Document({ title: "war and peace", contents: "yolo" });
-        doc.save(done2);
-      }, function(err) {
-        if (err) {
-          throw err;
-        }
-        request(server).get("/documents").end(function(err, res) {
-          expect(res.body.length).to.equal(5);
-          server.close();
-          done();
-        });
+      server = app.serve(9000);
+      populateAndGet(function(err, res) {
+        expect(res.body.length).to.equal(5);
+        done();
       });
     });
   });
 
   afterEach(function(done) {
     app.mongoose.db.dropDatabase(done);
+    server.close();
   });
+
+  function populateAndGet(cb) {
+    var Document = app.mongoose.model("Document");
+    async.each([1, 2, 3, 4, 5, 6], function(useless, done2) {
+      var doc = new Document({ title: "war and peace", contents: "yolo" });
+      doc.save(done2);
+    }, function(err) {
+      if (err) {
+        throw err;
+      }
+      request(server).get("/documents").end(cb);
+    });
+  }
 });
+
