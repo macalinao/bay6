@@ -22,7 +22,6 @@ describe("Model", function() {
     it("should return a maximum of n documents", function(done) {
       model.limit(5);
 
-      server = app.serve(9000);
       populateAndGet(function(err, res) {
         expect(res.body.length).to.equal(5);
         done();
@@ -36,6 +35,7 @@ describe("Model", function() {
   });
 
   function populateAndGet(cb) {
+    server = app.serve(9000);
     var Document = app.mongoose.model("Document");
     async.each([1, 2, 3, 4, 5, 6], function(useless, done2) {
       var doc = new Document({ title: "war and peace", contents: "yolo" });
