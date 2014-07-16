@@ -19,6 +19,24 @@ describe("Model", function() {
   });
 
   describe("#limit", function() {
+    it("should return all documents if too high", function(done) {
+      model.limit(10);
+
+      populateAndGet(function(err, res) {
+        expect(res.body.length).to.equal(6);
+        done();
+      });
+    });
+
+    it("should return all documents if the same number", function(done) {
+      model.limit(6);
+
+      populateAndGet(function(err, res) {
+        expect(res.body.length).to.equal(6);
+        done();
+      });
+    });
+    
     it("should return a maximum of n documents", function(done) {
       model.limit(5);
 
