@@ -28,7 +28,6 @@ describe("Bay6", function() {
         name: String,
         contents: String
       });
-      console.log(schema.prototype);
       var model = app.model("Document", schema);
       
       expect(model.name).to.equal("Document");
