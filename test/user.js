@@ -1,3 +1,5 @@
+"use strict";
+
 var expect = require("chai").expect;
 
 var bay6 = require("../lib/");
@@ -36,6 +38,6 @@ describe("User", function() {
   });
 
   afterEach(function() {
-    User.find().remove().exec();;
+    User.find().remove().exec();
   });
 });

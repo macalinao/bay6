@@ -1,3 +1,5 @@
+"use strict";
+
 var async = require("async");
 var bay6 = require("../lib/");
 var expect = require("chai").expect;
