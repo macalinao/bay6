@@ -8,8 +8,8 @@ var passport = require("passport");
 var restify = require("express-restify-mongoose");
 var xtend = require("xtend");
 
-var Auth = require("libs/auth");
-var Model = require("libs/model");
+var Auth = require("lib/auth");
+var Model = require("lib/model");
 
 module.exports = function() {
   return new Bay6();
