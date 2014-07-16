@@ -17,6 +17,7 @@ describe("User", function() {
     
     before(function(done) {
       bob = new User({username: "bob", password: "mfw"});
+      // this in itself is a test of the hashing function
       bob.save(function(err) {
         if (err) {
           throw err;
