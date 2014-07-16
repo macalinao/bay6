@@ -1,27 +1,21 @@
-# bay6
+# bay6 
 
-[![Build Status](https://secure.travis-ci.org/user/bay6.png?branch=master)](http://travis-ci.org/user/bay6)
+Simple HTTP and MongoDB-based REST service provider for Node.
 
+[![Build Status](https://secure.travis-ci.org/simplyianm/bay6.png?branch=master)](http://travis-ci.org/simplyianm/bay6)
 
-## Installation
+## Features
+* RESTful API provider of [Mongoose][mongoose] models
+* Robust, MongoDB-based query system
+* User authentication/authorization system via [Passport][passport] and [connect-roles][connect-roles]
+* Hooks into an existing Express application or runs its own application
+* Static public directory support for apps with a frontend (e.g. AngularJS apps)
 
-Install with npm:
+## License
 
-```
-npm install --save bay6
-```
+Copyright (c) 2014 Ian Macalinao  
+Licensed under the MIT license.
 
-
-## API
-
-### bay6()
-
-
-## Testing
-
-From the repo root:
-
-```
-npm install
-npm test
-```
+[passport]: http://passportjs.org
+[connect-roles]: https://github.com/ForbesLindesay/connect-roles
+[mongoose]: http://mongoosejs.com
