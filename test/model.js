@@ -15,7 +15,6 @@ describe("Model", function() {
       title: String,
       contents: String
     });
-    mongoose.set("debug", true);
   });
 
   describe("#limit", function() {
