@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "main": "index.js",
   "dependencies": {
+    "bcrypt-nodejs": "~0.0.3",
     "body-parser": "~1.4.3",
     "express": "~4.6.1",
     "express-restify-mongoose": "~0.6.8",
