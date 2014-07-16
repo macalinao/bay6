@@ -15,7 +15,8 @@
   },
   "devDependencies": {
     "chai": "*",
-    "mocha": "*"
+    "mocha": "*",
+    "supertest": "*"
   },
   "scripts": {
     "test": "mocha --reporter spec"
