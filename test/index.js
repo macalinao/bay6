@@ -5,6 +5,37 @@ var bay6 = require("../lib/");
 var mongoose = require("mongoose");
 
 describe("Bay6", function() {
+  describe("#model", function() {
+    var app;
+
+    before(function() {
+      app = bay6();
+    });
+
+    it("should create a Schema if given an object", function() {
+      var schema = {
+        name: String,
+        contents: String
+      };
+      var model = app.model("Document", schema);
+
+      expect(model.name).to.equal("Document");
+      expect(model.schema).to.not.equal(schema);
+    });
+
+    it("should copy the Schema if given a Schema", function() {
+      var schema = new mongoose.Schema({
+        name: String,
+        contents: String
+      });
+      console.log(schema.prototype);
+      var model = app.model("Document", schema);
+      
+      expect(model.name).to.equal("Document");
+      expect(model.schema).to.equal(schema);
+    });
+  });
+
   describe("full stack tests", function() {
     var app;
     var server;
