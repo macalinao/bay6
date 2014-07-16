@@ -1,9 +1,7 @@
 var passport = require("passport");
 var xtend = require("xtend");
 
-module.exports = function() {
-  return new Auth();
-}
+module.exports = Auth;
 
 function Auth() {
   // These fields are required for the user schema
@@ -20,7 +18,7 @@ function Auth() {
       type: String,
       required: true
     }
-  }
+  };
 }
 
 /**
