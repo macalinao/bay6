@@ -37,4 +37,29 @@ describe("Auth", function() {
       expect(auth._userSchema.email).to.equal(String);
     });
   });
+
+  describe("routes", function() {
+    var app, agent1, agent2;
+
+    before(function(done) {
+      app = bay6();
+      var server = app.serve(9000);
+      agent1 = request(server);
+
+      var User = app.mongoose.model("User");
+      (new User({username: "bob", password: "mfw"})).save(done);
+    });
+
+    it("should return the username when logged in", function() {
+      agent1.post("/api/login").send({username: "bob", password: "mfw"}).end(function(err, res) {
+        expect(err).to.not.exist;
+        expect(res.body.username).to.equal("bob");
+      });
+    });
+
+    after(function(done) {
+      app.server.close();
+      app.mongoose.model("User").find().remove().exec(done);
+    });
+  });
 });
