@@ -21,6 +21,7 @@
     "supertest": "*"
   },
   "scripts": {
+    "pretest": "jshint index.js lib/ test/",
     "test": "mocha --reporter spec"
   }
 }
