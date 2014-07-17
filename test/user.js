@@ -16,9 +16,12 @@ describe("User", function() {
 
   describe("#validPassword", function() {
     var bob;
-    
+
     before(function(done) {
-      bob = new User({username: "bob", password: "mfw"});
+      bob = new User({
+        username: "bob",
+        password: "mfw"
+      });
       // this in itself is a test of the hashing function
       bob.save(function(err) {
         if (err) {

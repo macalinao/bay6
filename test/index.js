@@ -31,7 +31,7 @@ describe("Bay6", function() {
         contents: String
       });
       var model = app.model("Document", schema);
-      
+
       expect(model.name).to.equal("Document");
       expect(model.schema).to.equal(schema);
     });
@@ -70,7 +70,10 @@ describe("Bay6", function() {
 
     it("should find a document", function(done) {
       var Document = app.mongoose.model("Document");
-      var doc = new Document({title: "test", contents: "loremipsum"});
+      var doc = new Document({
+        title: "test",
+        contents: "loremipsum"
+      });
       doc.save(function(err) {
         if (err) {
           throw err;
@@ -95,5 +98,3 @@ describe("Bay6", function() {
     });
   });
 });
-
-

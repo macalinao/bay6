@@ -38,7 +38,7 @@ describe("Model", function() {
         done();
       });
     });
-    
+
     it("should return a maximum of n documents", function(done) {
       model.limit(5);
 
@@ -58,7 +58,10 @@ describe("Model", function() {
     server = app.serve(9000);
     var Document = app.mongoose.model("Document");
     async.each([1, 2, 3, 4, 5, 6], function(useless, done2) {
-      var doc = new Document({ title: "war and peace", contents: "yolo" });
+      var doc = new Document({
+        title: "war and peace",
+        contents: "yolo"
+      });
       doc.save(done2);
     }, function(err) {
       if (err) {
@@ -68,4 +71,3 @@ describe("Model", function() {
     });
   }
 });
-
