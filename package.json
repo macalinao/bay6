@@ -1,27 +1,28 @@
 {
   "name": "bay6",
   "description": "",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "main": "index.js",
   "dependencies": {
     "bcrypt-nodejs": "~0.0.3",
     "body-parser": "~1.4.3",
     "express": "~4.6.1",
-    "express-restify-mongoose": "~0.6.8",
     "method-override": "~2.1.1",
     "mongoose": "~3.8.0",
     "passport": "~0.2.0",
     "passport-local": "~1.0.0",
+    "restifier": "^0.1.0",
     "xtend": "~3.0.0"
   },
   "devDependencies": {
     "async": "~0.9.0",
     "chai": "*",
+    "jshint": "^2.5.2",
     "mocha": "*",
     "supertest": "*"
   },
   "scripts": {
-    "pretest": "jshint index.js lib/ test/",
-    "test": "mocha --reporter spec"
+    "pretest": "node_modules/.bin/jshint index.js lib/ test/",
+    "test": "node_modules/.bin/mocha --reporter spec"
   }
 }
